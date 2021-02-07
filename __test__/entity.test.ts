@@ -13,6 +13,7 @@ describe("Entity", () => {
     const c1 = new C1();
     const c2 = new C2();
     const c3 = new C3();
+    const c4 = new C3();
 
     beforeEach(() => {
         e = new E1();
@@ -50,6 +51,15 @@ describe("Entity", () => {
         expect(e.hasComponent(C1)).toBeTruthy();
         expect(e.hasComponent(C3)).toBeTruthy();
     });
+
+    // it("should overwrite component of the same class"), () => {
+    //     e.addComponent(c3);
+    //     expect(e.getComponent(C3)).toBe(c3);
+
+    //     e.addComponent(c4);
+    //     expect(e.getComponent(C3)).toBe(c4);
+    //     expect(e.components.length).toBe(1);
+    // }
 
     it("should throw error if component has not been found", () => {
         expect(e.hasComponent(C1)).toBeFalsy();
