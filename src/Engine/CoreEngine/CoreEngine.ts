@@ -5,6 +5,7 @@ import Renderable from "../Components/Renderable"
 import Colidable from "../Components/Colidable"
 import { IPointerDevice } from "../Input/inputs.h"
 import { Vector } from "../Utils/vector.h"
+import { CanvasBackground } from "../Utils/canvasBackground.h";
 
 export default class CoreEngine {
 
@@ -54,6 +55,10 @@ export default class CoreEngine {
 
     public init(callback = () => {}) {
         window.requestAnimationFrame(() => this._mainLoop(callback))
+    }
+
+    public changeBackground(canvasBackground: CanvasBackground) {
+        this._renderEngine.renderBackground(canvasBackground);
     }
 
     private _mainLoop(callback: () => void) {
