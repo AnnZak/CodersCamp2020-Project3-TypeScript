@@ -22,8 +22,8 @@ export default class RenderEngine {
                     this._objectTexture(component1.position.x, component1.position.y, component.size.width, component.texture);  
                 } else {
                     switch(component.shape) {
-                        case "CIRCLE":
-                            this._drawCircle(component1.position.x, component1.position.y, component.size.width, component.color);
+                        case "SQUARE":
+                            this._drawSquare(component1.position.x, component1.position.y, component.size.width, component.size.height, component.color);
                             break;
                         default: 
                         this._drawCircle(component1.position.x, component1.position.y, component.size.width, component.color);
