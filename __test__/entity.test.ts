@@ -52,14 +52,14 @@ describe("Entity", () => {
         expect(e.hasComponent(C3)).toBeTruthy();
     });
 
-    // it("should overwrite component of the same class"), () => {
-    //     e.addComponent(c3);
-    //     expect(e.getComponent(C3)).toBe(c3);
+    it("should overwrite component of the same class", () => {
+        e.addComponent(c3);
+        expect(e.getComponent(C3)).toBe(c3);
 
-    //     e.addComponent(c4);
-    //     expect(e.getComponent(C3)).toBe(c4);
-    //     expect(e.components.length).toBe(1);
-    // }
+        e.addComponent(c4);
+        expect(e.getComponent(C3)).toBe(c4);
+        expect(e.components.length).toBe(1);
+    });
 
     it("should throw error if component has not been found", () => {
         expect(e.hasComponent(C1)).toBeFalsy();

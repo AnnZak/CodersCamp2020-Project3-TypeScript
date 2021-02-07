@@ -18,14 +18,10 @@ export default abstract class Entity {
     }
 
     public addComponent(component: Component): void {
-        // let indexOfSameComponent = -1;
-        // for(const comp of this._components) {
-        //     if(typeof comp == typeof component)
-        //         indexOfSameComponent = this._components.indexOf(comp);
-        // }
-        // if(indexOfSameComponent > -1)
-        //     this._components[indexOfSameComponent] = component;
-        // else
+        const indexOfSameComponent = this._components.findIndex(comp => comp.constructor == component.constructor);
+        if(indexOfSameComponent > -1)
+            this._components[indexOfSameComponent] = component;
+        else
             this._components.push(component);
         component.entity = this;
     }
