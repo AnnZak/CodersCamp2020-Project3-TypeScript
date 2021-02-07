@@ -7,7 +7,7 @@ import RenderEngine from "../src/Engine/RenderEngine/RenderEngine";
 describe("RenderEngine", () => {
     document.body.innerHTML = '<canvas id="canvas"></canvas>';
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     
     it("creates canvas in size of full window if no size parameters are specified", () => {

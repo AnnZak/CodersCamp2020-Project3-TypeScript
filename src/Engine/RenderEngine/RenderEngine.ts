@@ -6,7 +6,7 @@ import { CanvasBackground } from "../Utils/canvasBackground.h";
 
 export default class RenderEngine {
 
-    constructor(private _canvas: HTMLCanvasElement, private _ctx: CanvasRenderingContext2D | null, private settings?: RenderSettings) {
+    constructor(private _canvas: HTMLCanvasElement, private _ctx: CanvasRenderingContext2D, private settings?: RenderSettings) {
         this._canvas.width = 0;
         this._canvas.height = 0;
         this.settings = settings;
@@ -80,24 +80,24 @@ export default class RenderEngine {
     private _drawSquare(x: number, y: number, width: number, height: number, color: string) {
         const square = new Path2D();
         square.rect(x-width/2, y-height/2, width, height);
-        this._ctx!.fillStyle = color;
-        this._ctx!.fill(square);
-        this._ctx!.stroke(square);
+        this._ctx.fillStyle = color;
+        this._ctx.fill(square);
+        this._ctx.stroke(square);
     }
 
     private _drawCircle(x: number, y: number, width: number, color: string) {
         const circle = new Path2D();
         circle.arc(x, y, width/2, 0, 2 * Math.PI);
-        this._ctx!.fillStyle = color;
-        this._ctx!.fill(circle);        
+        this._ctx.fillStyle = color;
+        this._ctx.fill(circle);        
     }
 
     private _objectTexture(x: number, y: number, width: number, texture: string) {
         const img = new Image();
         const ctx = this._ctx;
         img.addEventListener('load', function(e) {
-            ctx!.drawImage(this, x-width/2, y-width/2, width, width);
-            ctx!.fill();
+            ctx.drawImage(this, x-width/2, y-width/2, width, width);
+            ctx.fill();
         }, true);
         img.src = texture;
       }

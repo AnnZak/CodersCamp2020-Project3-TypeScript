@@ -12,9 +12,14 @@ const engine = new Engine(canvas, new mockMouse());
 class Bubble extends Entity {
     constructor(arrayComponents: Array<Component>) {
         super(arrayComponents);
-        this.addComponent(new Renderable("blue", Shape.circle, {width: 20, height:20}));
+        this.addComponent(new Renderable("blue", Shape.circle, {width: 50, height:50}));
     }
 }
 
-engine.addEntity(new Bubble([new Colidable({x: 20, y: 50}, {x: 50, y: 0}, {x: 0, y: 0})]));
+const bubble1 = engine.addEntity(new Bubble([new Colidable({x: -20, y: 50}, {x: 3, y: 0}, {x: 0, y: 0.001})]));
+const bubble2 = engine.addEntity(new Bubble([new Colidable({x: -40, y: 60}, {x: 2, y: -0.3}, {x: 0, y: 0.001})]));
+const bubble3 = engine.addEntity(new Bubble([new Colidable({x: 1920, y: 100}, {x: -1, y: 0}, {x: 0, y: 0.001})]));
+
+engine.changeBackground({color: "green"});
+
 engine.init(() => {});
