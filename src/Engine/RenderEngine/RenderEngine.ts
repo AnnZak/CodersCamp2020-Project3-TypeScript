@@ -7,8 +7,8 @@ import { CanvasBackground } from "../Utils/canvasBackground.h";
 export default class RenderEngine {
 
     constructor(private _canvas: HTMLCanvasElement, private _ctx: CanvasRenderingContext2D | null, private settings?: RenderSettings) {
-        _canvas.width = 0;
-        _canvas.height = 0;
+        this._canvas.width = 0;
+        this._canvas.height = 0;
         this.settings = settings;
         this._setupCanvasSize();
     }
@@ -42,12 +42,12 @@ export default class RenderEngine {
     }
 
     public renderBackground(background: CanvasBackground): void {
-        if(background.imagePath) {
-            this._canvas.style.background = `url(${background.imagePath})`;
+        if (background.imagePath) {
+            this._canvas.style.background = `url("${background.imagePath}")`;
             return;
         }
         
-        if(background.gradient) {
+        if (background.gradient) {
             this._canvas.style.background = `${background.gradient}`;
             return;
         }
@@ -64,9 +64,9 @@ export default class RenderEngine {
         this._canvas.height = document.body.clientHeight;
 
         if(this.settings) {
-            if (this.settings.height && this.settings.width) {
-                this._canvas.width = this.settings.width;
-                this._canvas.height = this.settings.height;
+            if (this.settings.height || this.settings.width) {
+                this._canvas.width = this.settings.width || 0;
+                this._canvas.height = this.settings.height || 0;
                 return;
             }
         }

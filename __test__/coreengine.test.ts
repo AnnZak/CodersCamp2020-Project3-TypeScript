@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import CoreEngine from "../src/Engine/CoreEngine/CoreEngine"
+import CoreEngine from "../src/Engine/CoreEngine/CoreEngine";
 import Entity from "../src/Engine/Entity/Entity";
 import { Vector } from "../src/Engine/Utils/vector.h";
-import { IPointerDevice } from "../src/Engine/Input/inputs.h"
+import { IPointerDevice } from "../src/Engine/Input/inputs.h";
 
 describe("CoreEngine", () => {
     
@@ -37,4 +37,4 @@ describe("CoreEngine", () => {
         expect(engine.entities).toStrictEqual([obj2]);
     });
     
-})
+});
