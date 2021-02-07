@@ -36,6 +36,10 @@ export default class CoreEngine {
         return this._entities;
     }
 
+    public init(callback = () => {}) {
+        window.requestAnimationFrame(() => this._mainLoop(callback))
+    }
+
     public addEntity(entity: Entity): Entity {
         this._entities.push(entity);
         return entity;
@@ -51,10 +55,6 @@ export default class CoreEngine {
 
     public pauseGame() {
         this.gamePaused = !this.gamePaused;
-    }
-
-    public init(callback = () => {}) {
-        window.requestAnimationFrame(() => this._mainLoop(callback))
     }
 
     public changeBackground(canvasBackground: CanvasBackground) {
