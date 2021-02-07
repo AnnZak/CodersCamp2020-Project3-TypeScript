@@ -1,4 +1,5 @@
 import Renderable from "../Components/Renderable";
+import Colidable from "../Components/Colidable"; 
 import Entity from "../Entity/Entity"
 import { RenderSettings } from "../Utils/renderSettings.h";
 import { CanvasBackground } from "../Utils/canvasBackground.h";
@@ -12,25 +13,6 @@ export default class RenderEngine {
         this._setupCanvasSize();
     }
 
-    private _setupCanvasSize(): void {
-
-        this._canvas.width = document.body.clientWidth;
-        this._canvas.height = document.body.clientHeight;
-
-        if(this.settings) {
-            if (this.settings.height || this.settings.width) {
-                this._canvas.width = this.settings.width || 0;
-                this._canvas.height = this.settings.height || 0;
-                return;
-            }
-        }
-
-        window.addEventListener('resize', () => {
-            this._canvas.width = document.body.clientWidth;
-            this._canvas.height = document.body.clientHeight;
-        });
-    }
-
     public render(entitiesArray: Array<Entity>): void {
         if(!this._ctx) {
             throw new Error("Canvas context is null / not found");
@@ -40,7 +22,19 @@ export default class RenderEngine {
         for (const entity of entitiesArray) {
             try {
                 const component = entity.getComponent(Renderable);
-                component.drawSelf(this._ctx); // obiekty renderują się same (po wybraniu, czym chcą być)
+                const component1 = entity.getComponent(Colidable);
+
+                if (component.texture) {
+                    this._objectTexture(component1.position.x, component1.position.y, component.size.width, component.texture);  
+                } else {
+                    switch(component.shape) {
+                        case "SQUARE":
+                            this._drawSquare(component1.position.x, component1.position.y, component.size.width, component.size.height, component.color);
+                            break;
+                        default: 
+                        this._drawCircle(component1.position.x, component1.position.y, component.size.width, component.color);
+                    }
+                }
             } catch (err) {
                 console.error(`Could not find component of class Renderable in entity: ${entity.constructor.name}`);
             }
@@ -63,4 +57,48 @@ export default class RenderEngine {
             return;
         }
     }
+  
+    private _setupCanvasSize(): void {
+
+        this._canvas.width = document.body.clientWidth;
+        this._canvas.height = document.body.clientHeight;
+
+        if(this.settings) {
+            if (this.settings.height || this.settings.width) {
+                this._canvas.width = this.settings.width || 0;
+                this._canvas.height = this.settings.height || 0;
+                return;
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            this._canvas.width = document.body.clientWidth;
+            this._canvas.height = document.body.clientHeight;
+        });
+    }
+
+    private _drawSquare(x: number, y: number, width: number, height: number, color: string) {
+        const square = new Path2D();
+        square.rect(x-width/2, y-height/2, width, height);
+        this._ctx!.fillStyle = color;
+        this._ctx!.fill(square);
+        this._ctx!.stroke(square);
+    }
+
+    private _drawCircle(x: number, y: number, width: number, color: string) {
+        const circle = new Path2D();
+        circle.arc(x, y, width/2, 0, 2 * Math.PI);
+        this._ctx!.fillStyle = color;
+        this._ctx!.fill(circle);        
+    }
+
+    private _objectTexture(x: number, y: number, width: number, texture: string) {
+        const img = new Image();
+        const ctx = this._ctx;
+        img.addEventListener('load', function(e) {
+            ctx!.drawImage(this, x-width/2, y-width/2, width, width);
+            ctx!.fill();
+        }, true);
+        img.src = texture;
+      }
 }
