@@ -18,7 +18,7 @@ export default class CoreEngine {
     private _physicsEngine = new PhysicsEngine();
     // private _audioEngine: AudioEngine = new AudioEngine();
 
-    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice) { 
+    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
         this._ctx = this._canvas.getContext("2d");
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
         //this._uiEngine = new UIEngine(this._canvas);
@@ -27,11 +27,11 @@ export default class CoreEngine {
     public get cursorPosition() {
         return this._cursorPosition;
     }
-    
+
     public get previousCursorPosition() {
         return this._prevCursorPosition;
     }
-    
+
     public get entities() {
         return this._entities;
     }
@@ -49,6 +49,10 @@ export default class CoreEngine {
             throw new Error("This entity does not exist");
     }
 
+    public pauseGame() {
+        this.gamePaused = !this.gamePaused;
+    }
+
     public init(callback = () => {}) {
         window.requestAnimationFrame(() => this._mainLoop(callback))
     }
@@ -58,6 +62,9 @@ export default class CoreEngine {
     }
 
     private _mainLoop(callback: () => void) {
+        if (this.gamePaused) {
+            return;
+        }
         this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
         this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
         this._readInput();
