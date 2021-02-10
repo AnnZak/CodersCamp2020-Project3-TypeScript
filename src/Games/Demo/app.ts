@@ -16,18 +16,23 @@ class Bubble extends Entity {
     }
 }
 
-const bubble1 = engine.addEntity(new Bubble([new Colidable({x: -20, y: 50}, {x: 3, y: 0}, {x: 0, y: 0.001})]));
-const bubble2 = engine.addEntity(new Bubble([new Colidable({x: -40, y: 60}, {x: 2, y: -0.3}, {x: 0, y: 0.001})]));
-const bubble3 = engine.addEntity(new Bubble([new Colidable({x: 1920, y: 100}, {x: -1, y: 0}, {x: 0, y: 0.001})]));
+const cw = canvas.width;
+const ch = canvas.height;
+
+const gravity: Vector = {x: 0, y: 0.01};
+
+const bubble1 = engine.addEntity(new Bubble([new Colidable({x: 60, y: 200}, {x: 5, y: 0}, gravity)]));
+const bubble2 = engine.addEntity(new Bubble([new Colidable({x: 60, y: 60}, {x: 6, y: -0.3}, gravity)]));
+const bubble3 = engine.addEntity(new Bubble([new Colidable({x: cw - 60, y: 100}, {x: -5, y: 0}, gravity)]));
 
 engine.changeBackground({color: "green"});
 
 engine.init(() => {
     console.log("one loop passed")
     engine.entities.forEach(object => {
-        if (object.getComponent(Colidable).position.x > canvas.width)
+        if (object.getComponent(Colidable).position.x + 50 >= canvas.width || object.getComponent(Colidable).position.x -50 <= 0)
             object.getComponent(Colidable).velocity.x *= -1;
-        if (object.getComponent(Colidable).position.y > canvas.height)
+        if (object.getComponent(Colidable).position.y + 50 >= canvas.height || object.getComponent(Colidable).position.y -50 <= 0)
             object.getComponent(Colidable).velocity.y *= -1;
     })
 });
