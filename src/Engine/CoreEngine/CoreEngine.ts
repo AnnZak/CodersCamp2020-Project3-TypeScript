@@ -12,14 +12,14 @@ export default class CoreEngine {
     private _cursorPosition: Vector = {x: 0, y: 0};
     private _prevCursorPosition: Vector = {x: 0, y: 0};
     private _entities: Array<Entity> =[];
-    private _ctx: CanvasRenderingContext2D | null;
+    private _ctx: CanvasRenderingContext2D;
     private _renderEngine;
     // private _uiEngine;
     private _physicsEngine = new PhysicsEngine();
     // private _audioEngine: AudioEngine = new AudioEngine();
 
     constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
-        this._ctx = this._canvas.getContext("2d");
+        this._ctx = this._canvas.getContext("2d") as CanvasRenderingContext2D;
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
         //this._uiEngine = new UIEngine(this._canvas);
     }
@@ -34,6 +34,10 @@ export default class CoreEngine {
 
     public get entities() {
         return this._entities;
+    }
+
+    public init(callback = () => {}) {
+        window.requestAnimationFrame(() => {this._mainLoop(callback)});
     }
 
     public addEntity(entity: Entity): Entity {
@@ -53,23 +57,19 @@ export default class CoreEngine {
         this.gamePaused = !this.gamePaused;
     }
 
-    public init(callback = () => {}) {
-        window.requestAnimationFrame(() => this._mainLoop(callback))
-    }
-
     public changeBackground(canvasBackground: CanvasBackground) {
         this._renderEngine.renderBackground(canvasBackground);
     }
 
     private _mainLoop(callback: () => void) {
-        if (this.gamePaused) {
-            return;
-        }
+        if (this.gamePaused) return;
+
         this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
         this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
         this._readInput();
 
         callback();
+        this.init(callback);
     }
 
     private _readInput(): void {
