@@ -62,9 +62,8 @@ export default class CoreEngine {
     }
 
     private _mainLoop(callback: () => void) {
-        if (this.gamePaused) {
-            return;
-        }
+        if (this.gamePaused) return;
+
         this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
         this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
         this._readInput();

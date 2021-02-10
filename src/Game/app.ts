@@ -22,4 +22,12 @@ const bubble3 = engine.addEntity(new Bubble([new Colidable({x: 1920, y: 100}, {x
 
 engine.changeBackground({color: "green"});
 
-engine.init(() => {});
+engine.init(() => {
+    console.log("one loop passed")
+    engine.entities.forEach(object => {
+        if (object.getComponent(Colidable).position.x > canvas.width)
+            object.getComponent(Colidable).velocity.x *= -1;
+        if (object.getComponent(Colidable).position.y > canvas.height)
+            object.getComponent(Colidable).velocity.y *= -1;
+    })
+});
