@@ -1,4 +1,4 @@
-import { Engine, Entity, Component, Renderable, Colidable, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../Engine";
+import { Engine, Entity, Component, Renderable, Colidable, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../../Engine";
 
 class mockMouse implements IPointerDevice {
     getCursorPosition(): Vector {
