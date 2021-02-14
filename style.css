@@ -14,3 +14,16 @@ body {
     font-family: sans-serif;
 }
 
+#canvas {
+    border: 1px solid red;
+    position: absolute;
+    z-index: 100;
+}
+
+#video {
+    position: relative;
+    z-index: 1;
+}
+
+
+

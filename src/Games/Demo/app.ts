@@ -23,7 +23,7 @@ const bubble1 = engine.addEntity(new Bubble([new Colidable({x: 60, y: 200}, {x: 
 const bubble2 = engine.addEntity(new Bubble([new Colidable({x: 60, y: 60}, {x: 6, y: -0.3}, gravity)]));
 const bubble3 = engine.addEntity(new Bubble([new Colidable({x: cw - 60, y: 100}, {x: -5, y: 0}, gravity)]));
 
-engine.changeBackground({color: "green"});
+// engine.changeBackground({color: "green"});
 
 engine.init(() => {
     console.log("one loop passed")
