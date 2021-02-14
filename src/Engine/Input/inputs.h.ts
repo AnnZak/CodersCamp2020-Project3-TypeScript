@@ -1,5 +1,5 @@
 import { Vector } from "../Utils/vector.h"
 
 export interface IPointerDevice {
-    getCursorPosition(): Vector
+    getCursorPosition(event: MouseEvent): Vector
 }
