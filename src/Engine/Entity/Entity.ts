@@ -36,7 +36,7 @@ export default abstract class Entity {
     }
 
     public removeComponent<C extends Component>(constr: constr<C>): void {
-        let toRemove: Component | undefined;    //TODO: check if better union available
+        let toRemove: Component | null = null;    //TODO: check if better union available
         let index = -1;
 
         for (const component of this._components) {

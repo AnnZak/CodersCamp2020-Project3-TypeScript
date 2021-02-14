@@ -1,8 +1,8 @@
 import Renderable from "../Components/Renderable";
-import Colidable from "../Components/Colidable"; 
 import Entity from "../Entity/Entity"
 import { RenderSettings } from "../Utils/renderSettings.h";
 import { CanvasBackground } from "../Utils/canvasBackground.h";
+import { CPosition } from "../Components";
 
 export default class RenderEngine {
 
@@ -22,17 +22,17 @@ export default class RenderEngine {
         for (const entity of entitiesArray) {
             try {
                 const component = entity.getComponent(Renderable);
-                const component1 = entity.getComponent(Colidable);
+                const position = entity.getComponent(CPosition);
 
                 if (component.texture) {
-                    this._objectTexture(component1.position.x, component1.position.y, component.size.width, component.texture);  
+                    this._objectTexture(position.x, position.y, component.size.width, component.texture);  
                 } else {
                     switch(component.shape) {
                         case "SQUARE":
-                            this._drawSquare(component1.position.x, component1.position.y, component.size.width, component.size.height, component.color);
+                            this._drawSquare(position.x, position.y, component.size.width, component.size.height, component.color);
                             break;
                         default: 
-                        this._drawCircle(component1.position.x, component1.position.y, component.size.width, component.color);
+                        this._drawCircle(position.x, position.y, component.size.width, component.color);
                     }
                 }
             } catch (err) {
