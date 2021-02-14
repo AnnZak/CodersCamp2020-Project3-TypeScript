@@ -1,9 +1,7 @@
-import { Engine, Entity, Component, Renderable, Colidable, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../../Engine";
+import { Engine, Entity, Component, Renderable, Colidable, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse } from "../../Engine";
 
 class mockMouse implements IPointerDevice {
-    getCursorPosition(): Vector {
-        return {x: 1, y: 1};
-    }
+    public cursorPosition: Vector = {x: 1, y: 1}
 }
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;

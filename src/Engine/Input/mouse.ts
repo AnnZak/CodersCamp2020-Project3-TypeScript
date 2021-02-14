@@ -3,22 +3,24 @@ import { Vector } from "../Utils/vector.h";
 
 export default class Mouse implements IPointerDevice {
 
-    public cursorPosition: Vector = {x: 0, y: 0}; //private?
-    private rect;
+    private _cursorPosition: Vector = {x: 0, y: 0};
+    private _rect;
 
     constructor (private _canvas: HTMLCanvasElement) {
-        this.rect = this._canvas.getBoundingClientRect(); // abs. size of element
+        this._rect = this._canvas.getBoundingClientRect(); // object with info about size and position (relative to the viewport) of canvas element
+        
+        document.addEventListener("mousemove", (event) => {
+
+            let scaleX = this._canvas.width / this._rect.width;   // scale of canvas vs bitmap size on x
+            let scaleY = this._canvas.height / this._rect.height;  // scale of canvas vs bitmap size on x
+        
+            this._cursorPosition.x = Math.floor((event.clientX - this._rect.left) * scaleX);
+            this._cursorPosition.y = Math.floor((event.clientY - this._rect.top) * scaleY);
+
+        });
     }
 
-    public getCursorPosition(event: MouseEvent) {
-
-        let scaleX = this._canvas.width / this.rect.width;   // relationship bitmap vs. element for X
-        let scaleY = this._canvas.height / this.rect.height;  // relationship bitmap vs. element for Y
-      
-        this.cursorPosition.x = (event.clientX - this.rect.left) * scaleX;   // scale mouse coordinates after they have
-        this.cursorPosition.y = (event.clientY - this.rect.top) * scaleY;     // been adjusted to be relative to element
-
-
-        return this.cursorPosition;
+    public get cursorPosition() {
+        return this._cursorPosition;
     }
 }

@@ -69,18 +69,15 @@ export default class CoreEngine {
         this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
         this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
         this._readInput();
+        // console.log("in core engine: ");
+        // console.log(this._cursorPosition);
 
         callback();
         this.init(callback);
     }
 
     private _readInput(): void {
-
         this._prevCursorPosition = this._cursorPosition;
-        // this._cursorPosition = this._controller.getCursorPosition();
-        document.addEventListener("mousemove", (e) => {
-            this._cursorPosition = this._controller.getCursorPosition(e);
-            console.log(this._cursorPosition);
-        })
+        this._cursorPosition = this._controller.cursorPosition;
     }
 }
