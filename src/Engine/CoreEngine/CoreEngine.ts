@@ -16,10 +16,14 @@ export default class CoreEngine {
     private _physicsEngine = new PhysicsEngine();
     private _lastTimestamp: number;
 
-    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
+    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, private _gamePaused: Boolean = false) {
         this._ctx = this._canvas.getContext("2d") as CanvasRenderingContext2D;
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
         this._lastTimestamp = Date.now();
+    }
+
+    public get gamePaused() {
+        return this._gamePaused;
     }
 
     public get cursorPosition() {
@@ -37,7 +41,7 @@ export default class CoreEngine {
     public mainLoop(callback = (deltaTime: number) => {console.log(deltaTime)}) {
         
         window.requestAnimationFrame(() => {
-        if (this.gamePaused) return;
+        if (this._gamePaused) return;
         
         const deltaTime = Date.now() - this._lastTimestamp;
 
@@ -65,7 +69,11 @@ export default class CoreEngine {
     }
 
     public pauseGame() {
-        this.gamePaused = !this.gamePaused;
+        this._gamePaused = true;
+    }
+
+    public resumeGame() {
+        this._gamePaused = false;
     }
 
     public changeBackground(canvasBackground: CanvasBackground) {
