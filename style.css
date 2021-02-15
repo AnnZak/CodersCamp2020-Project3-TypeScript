@@ -1,16 +1,98 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #240229;
-    color: white;
-    font-family: sans-serif;
+  display:block ;
+  
 }
 
+.container {
+  padding: 150px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.25),
+    rgba(36, 36, 36, 0.5)
+  ), 
+  url("underwater.jpg");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  height: 100vh;
+  position: relative;
+}
+
+.maindiv{
+  align-content: center;
+}
+h2 {
+  display: flex;
+  padding-left: 36%;
+  font-size: 52px;
+  color: #e5e5e5;
+  font-weight: 900;
+  margin-bottom: 150px;
+}
+
+.name {
+  position: relative;
+  font-size: 32px;
+  color: #5c8794;
+  right: 1rem;
+  border: none;
+}
+
+.name input {
+  border: none;
+  outline: none;
+  color: #5c8794;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 30px;
+  width: 550px;
+  height: 85px;
+  border-radius: 20px;
+  margin: 30px;
+  font-size: 32px;
+}
+
+.name .placeholder {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.name input:valid + .placeholder,
+.name input:focus + .placeholder {
+  top: -0.5rem;
+  left: 15%;
+  font-size: 16px;
+  color: #5c8794;
+  outline: none;
+}
+
+.btn,
+.btn1 {
+  background-color: rgba(255, 255, 255, 0.75);
+  height: 80px;
+  width: 260px;
+  border-radius: 20px;
+  margin-left: 30px;
+  transition: all 0.5s ease-in-out;
+  color: #5c8794;
+  font-size: 36px;
+  font-weight: 900;
+  border: none;
+  outline: none;
+}
+
+.btn:hover,
+.btn1:hover {
+  transform: scale(1.1);
+}
