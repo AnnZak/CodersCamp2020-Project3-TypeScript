@@ -1,7 +1,7 @@
 import {Component} from "../../../Engine";
 
 export default class Pointable extends Component {
-    constructor(private _points: number, private _radius: number){
+    constructor(private _points: number, private _radius: number, private _isBomb: boolean){
         super()
     }
 
@@ -11,5 +11,9 @@ export default class Pointable extends Component {
 
     public get radius() {
         return this._radius
+    }
+
+    public get isBomb() {
+        return this._isBomb;
     }
 }

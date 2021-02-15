@@ -3,8 +3,8 @@ import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity,
 import Renderable from "../../../Engine/Components/Renderable";
 
 export default class BlueBubble extends Bubble {
-    constructor(position: Vector, velocity: Vector) {
-        super(position, velocity, "blue", {width: 50, height: 50});
+    constructor(position: Vector, velocity: Vector, radius: number = 50) {
+        super(position, velocity, "blue", 10, radius, false);
     }
 }
 
