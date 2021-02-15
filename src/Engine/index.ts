@@ -7,5 +7,6 @@ import { RenderSettings } from "./Utils/renderSettings.h";
 import { Shape } from "./Utils/shape.h";
 import { Size } from "./Utils/size.h";
 import { Vector } from "./Utils/vector.h";
+import Mouse from "./Input/mouse";
 
-export { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector };
+export { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse };

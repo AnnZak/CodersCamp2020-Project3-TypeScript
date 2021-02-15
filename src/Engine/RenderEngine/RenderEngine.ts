@@ -9,7 +9,9 @@ export default class RenderEngine {
     constructor(private _canvas: HTMLCanvasElement, private _ctx: CanvasRenderingContext2D, private settings?: RenderSettings) {
         this._canvas.width = 0;
         this._canvas.height = 0;
-        this.settings = settings;
+        if (settings) {
+            this.settings = settings;
+        }
         this._setupCanvasSize();
     }
 

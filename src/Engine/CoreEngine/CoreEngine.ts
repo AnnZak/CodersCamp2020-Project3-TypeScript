@@ -81,9 +81,7 @@ export default class CoreEngine {
     }
 
     private _readInput(): void {
-
         this._prevCursorPosition = this._cursorPosition;
-        this._cursorPosition = this._controller.getCursorPosition();
-
+        this._cursorPosition = this._controller.cursorPosition;
     }
 }

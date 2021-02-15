@@ -18,9 +18,7 @@ describe("CoreEngine", () => {
 
 
     class mockMouse implements IPointerDevice {
-        getCursorPosition(): Vector {
-            return {x: 1, y: 1};
-        }
+        cursorPosition: Vector = {x: 1, y: 1}
     }
 
     const engine = new CoreEngine(canvas, new mockMouse());
