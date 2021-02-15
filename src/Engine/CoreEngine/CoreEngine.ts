@@ -1,8 +1,7 @@
 import Entity from "../Entity/Entity"
 import RenderEngine from "../RenderEngine/RenderEngine"
 import PhysicsEngine from "../PhysicsEngine/PhysicsEngine"
-import Renderable from "../Components/Renderable"
-import Colidable from "../Components/Colidable"
+import {Component, CRenderable, CPosition, CVelocity, CGravity} from "../Components"
 import { IPointerDevice } from "../Input/inputs.h"
 import { Vector } from "../Utils/vector.h"
 import { CanvasBackground } from "../Utils/canvasBackground.h";
@@ -15,7 +14,6 @@ export default class CoreEngine {
     private _ctx: CanvasRenderingContext2D;
     private _renderEngine;
     private _physicsEngine = new PhysicsEngine();
-    // private _audioEngine: AudioEngine = new AudioEngine();
     private _lastTimestamp: number;
 
     constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
@@ -43,8 +41,8 @@ export default class CoreEngine {
         
         const deltaTime = Date.now() - this._lastTimestamp;
 
-        this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
-        this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
+        this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(CVelocity)));
+        this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(CRenderable)));
         this._readInput();
 
         callback(deltaTime);
