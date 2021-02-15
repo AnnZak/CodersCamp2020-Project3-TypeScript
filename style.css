@@ -139,20 +139,25 @@ h2 {
 
 #start-container {
   display: flex;
-  justify-content: center;
-  text-align: center;
 }
 
-.content-not-visible {
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.not-visible {
   display: none;
 }
 
 .content-visible {
   font-family: 'Gaegu';
-  display: flex;
-  justify-content: center;
   font-size: 144px;
   color: #e5e5e5;
   font-weight: 900;
-  top: 50%;
+  /* position: relative; */
+  z-index: 2001;
 }
