@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display:block ;
+    
+  }
+  
+  .container {
+    font-family: 'Gaegu';
+    padding: 150px;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25),
+      rgba(36, 36, 36, 0.5)
+    ), 
+    url("underwater.jpg");
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    height: 100vh;
+    position: relative;
+  }
+
+  .box1 {
+    font-family: 'Gaegu';
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 2rem;
+    height: 80px;
+    width: 830px;
+    border-radius: 50px;
+    line-height: 30px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    filter: brightness(1.1);
+  }
+  
+.box1 a {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: #202427;
+    letter-spacing: 0.7rem;
+  }
+  
+  .box3 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    height: 500px;
+    width: 800px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.65);
+    opacity: 95%;
+  }
+  
+  .ranking {
+    font-size: 1.8rem;
+    
+  }
+  
+  .ranking-nav {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: #202427;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  
+  .ranking-nav li {
+    display: block;
+  }
+  
+  .ranking-nav li a {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  
+  /* ranking score*/
+  .first-place {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+
+  .second-place {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+
+  .third-place {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+  }
+
+  .player-score{
+    display: flex;
+    list-style: none;
+    margin-left: 5.7rem;
+    color: #202427;
+    font-weight: 900;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  .score{
+    display: flex;
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  .ranking li {
+    display: block;
+  }
+  .ranking li a {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #202427;
+  }
+
+  btn-container {
+    /* width: 830px; */
+    animation: btnShow 3s ease-out 2.8s forwards;
+  }
+
+  .btn1 {
+    font-family: 'Gaegu';
+    height: 80px;
+    width: 350px;
+    margin-top: 25px;
+    border-radius: 50px;
+    color: #e5e5e5;
+    font-size: 42px;
+    font-weight: 900;
+    border: none;
+    outline: none;
+    background-color: #24526C;
+    border-color: #e5e5e5;
+    border-width: 3px;
+    transition: all 0.5s ease-in-out;
+    transition: scale 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .btn1 a {
+    text-decoration: none;
+    color: #e5e5e5;
+  }
+  
+  .btn1:hover a {
+    color: #24526C;
+  }
+  
+  .btn1:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+    border: none;
+    font-weight: 900;
+  }
+  
+  .btn1:active {
+    transform: scale(1.15);
+  }
