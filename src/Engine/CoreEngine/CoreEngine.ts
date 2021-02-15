@@ -16,16 +16,11 @@ export default class CoreEngine {
     private _entities: Array<Entity> =[];
     private _ctx: CanvasRenderingContext2D;
     private _renderEngine;
-    // private _uiEngine;
     private _physicsEngine = new PhysicsEngine();
-    // private _audioEngine: AudioEngine = new AudioEngine();
 
     constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
         this._ctx = this._canvas.getContext("2d") as CanvasRenderingContext2D;
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
-        // this._controller = new Mouse(this._canvas);
-        this._controller = new HandTracker(this._canvas, this._ctx);
-        //this._uiEngine = new UIEngine(this._canvas);
     }
 
     public get cursorPosition() {
@@ -71,8 +66,6 @@ export default class CoreEngine {
         this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
         this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
         this._readInput();
-        // console.log("in core engine: ");
-        // console.log(this._cursorPosition);
 
         callback();
         this.init(callback);
