@@ -1,16 +1,8 @@
 //import game engine
-import { Engine, Entity, Component, Renderable, Colidable, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../../Engine";
+import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../../Engine";
 
 //import game objects
-class Pointable extends Component { //this one goes to separate file, i just haven't figured out where exactly
-    constructor(private _points: number){
-        super()
-    }
-
-    public get points() {
-        return this._points;
-    }
-}
+import Pointable from "./GameComponents/Pointable"
 
 export default class Game {
 
