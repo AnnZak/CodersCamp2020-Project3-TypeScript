@@ -14,7 +14,7 @@ export default class Game {
     private _maxGameTime;
     private _bubbleGenerator;
 
-    constructor(private _canvas: HTMLCanvasElement, private _inputDevice: IPointerDevice){ //setting might include difficulty: number of lifes between gameover, etc.
+    constructor(private _canvas: HTMLCanvasElement, private _inputDevice: IPointerDevice, private _playerName: string){ //setting might include difficulty: number of lifes between gameover, etc.
         this._maxGameTime = 60000;
         this._engine = new Engine(this._canvas, this._inputDevice, true);
         this._bubbleGenerator = new GameObjectGenerator(this._canvas, this._engine);
@@ -72,9 +72,23 @@ export default class Game {
     }
 
     private _gameOver() {
-        this._engine.pauseGame();
-        console.log(this._points);
-        //add final point calculation and write to localstorage
+      this._engine.pauseGame();
+      let topScoresArr: { name: string, score: number }[] = [];
+
+      if (localStorage.getItem('topScores')) {
+          topScoresArr = JSON.parse(localStorage.getItem('topScores')!)
+          localStorage.removeItem('topScores');
+      }
+
+      topScoresArr.push({ name:  this._playerName, score: this._points});
+
+      if (topScoresArr.length > 3) {
+          topScoresArr.sort((a, b) => a.score - b.score);
+          topScoresArr.pop();
+      }
+
+      localStorage.setItem('topScores', JSON.stringify(topScoresArr));
+
     }
 
     private _detectCursorCollision(object: Entity): boolean {
