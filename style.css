@@ -15,14 +15,19 @@ body {
 }
 
 #canvas {
-    border: 1px solid red;
     position: absolute;
     z-index: 100;
+    top: 0;
+    left: 0;
 }
 
 #video {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: none;
 }
 
 

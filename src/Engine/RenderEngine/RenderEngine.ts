@@ -45,7 +45,7 @@ export default class RenderEngine {
 
     public renderBackground(background: CanvasBackground): void {
         if (background.imagePath) {
-            this._canvas.style.background = `url("${background.imagePath}")`;
+            this._canvas.style.background = `url("${background.imagePath}") center / cover no-repeat`;
             return;
         }
         

@@ -8,5 +8,6 @@ import { Shape } from "./Utils/shape.h";
 import { Size } from "./Utils/size.h";
 import { Vector } from "./Utils/vector.h";
 import Mouse from "./Input/mouse";
+import HandTracker from "./Input/handtracker";
 
-export { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse };
+export { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse, HandTracker };

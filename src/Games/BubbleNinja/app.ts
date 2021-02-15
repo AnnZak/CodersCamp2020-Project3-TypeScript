@@ -1,4 +1,4 @@
-import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse } from "../../Engine";
+import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector, Mouse, HandTracker } from "../../Engine";
 import Game from "./Game";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
