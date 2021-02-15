@@ -19,6 +19,6 @@
 		]
 	},
 	"dependencies": {
-		"handtrackjs": "0.0.13"
+		"handtrackjs": "^0.0.13"
 	}
 }

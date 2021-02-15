@@ -57,8 +57,6 @@ export default class Game {
                 }
             });
 
-            console.log(this._engine.entities.length);
-
             if(this._gameTime >= this._maxGameTime && this._engine.entities.length === 0)
                 this._gameOver();
         });
@@ -89,7 +87,6 @@ export default class Game {
       }
 
       localStorage.setItem('topScores', JSON.stringify(topScoresArr));
-
     }
 
     private _detectCursorCollision(object: Entity): boolean {
