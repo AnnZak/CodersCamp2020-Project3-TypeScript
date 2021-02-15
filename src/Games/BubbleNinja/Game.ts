@@ -13,6 +13,7 @@ export default class Game {
     private _gameTime = 0;
     private _maxGameTime;
     private _bubbleGenerator;
+    private _gameEndFunciton = (score: number) => {};
 
     constructor(private _canvas: HTMLCanvasElement, private _inputDevice: IPointerDevice, private _playerName: string){ //setting might include difficulty: number of lifes between gameover, etc.
         this._maxGameTime = 60000;
@@ -70,8 +71,14 @@ export default class Game {
         this._engine.resumeGame();
     }
 
+    public onGameEnd(callback = (points: number) => { console.log(points) }) {
+        this._gameEndFunciton = callback;
+    }
+
     private _gameOver() {
       this._engine.pauseGame();
+
+    //   console.log(this._points);
       let topScoresArr: { name: string, score: number }[] = [];
 
       if (localStorage.getItem('topScores')) {
@@ -87,6 +94,8 @@ export default class Game {
       }
 
       localStorage.setItem('topScores', JSON.stringify(topScoresArr));
+
+      this._gameEndFunciton(this._points);
     }
 
     private _detectCursorCollision(object: Entity): boolean {
