@@ -31,40 +31,40 @@ export default class Game {
         this._engine = new Engine(this._canvas, this._inputDevice, true);
     }
 
-    private _lastBubbleTime = 0;
+    private _lastBubble = 0;
 
     public start() {
+
+        this._engine.resumeGame();
         this._engine.mainLoop((deltaTime) => {
 
+            console.log("Delta time: " + deltaTime + "ms")
+
             this._gameTime += deltaTime;
-            this._lastBubbleTime += deltaTime;
+            this._lastBubble += deltaTime
 
             //generate bubbles if the time is right (use deltaTime accumulation)
-            if(this._lastBubbleTime >= 1000){
-                this._lastBubbleTime = 0;
-                this._engine.addEntity(new Bubble({x: 60, y: 200}, {x: 5, y: 0}))
+            if(this._lastBubble >= 1000){
+                this._engine.addEntity(new Bubble({x: -50, y: 300}, {x: 5, y: 0}))
+                this._lastBubble = 0;
             }
-            
-
 
             this._engine.entities.forEach(entity => {
 
                 if(this._detectCursorCollision(entity)){
                     this._points += entity.getComponent(Pointable).points;
-                    console.log(this._points); //todo remove
-                    entity.removeComponent(Pointable);
-                    //fireworks
+                    //todo fireworks
                     this._engine.removeEntity(entity);
                 }
 
-            })
+            });
 
             if(this._gameTime >= this._maxGameTime){
                 this._gameOver();
                 this.pause();
             }
 
-        })
+        });
     }
 
     public pause() {
