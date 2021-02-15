@@ -1,8 +1,7 @@
 import Entity from "../Entity/Entity"
 import RenderEngine from "../RenderEngine/RenderEngine"
 import PhysicsEngine from "../PhysicsEngine/PhysicsEngine"
-import Renderable from "../Components/Renderable"
-import Colidable from "../Components/Colidable"
+import {Component, CRenderable, CPosition, CVelocity, CGravity} from "../Components"
 import { IPointerDevice } from "../Input/inputs.h"
 import { Vector } from "../Utils/vector.h"
 import { CanvasBackground } from "../Utils/canvasBackground.h";
@@ -17,10 +16,17 @@ export default class CoreEngine {
     private _ctx: CanvasRenderingContext2D;
     private _renderEngine;
     private _physicsEngine = new PhysicsEngine();
+    private _lastTimestamp: number;
 
-    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, public gamePaused: Boolean = false) {
+    constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, private _gamePaused: Boolean = false) {
         this._ctx = this._canvas.getContext("2d") as CanvasRenderingContext2D;
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
+
+        this._lastTimestamp = Date.now();
+    }
+
+    public get gamePaused() {
+        return this._gamePaused;
     }
 
     public get cursorPosition() {
@@ -35,8 +41,21 @@ export default class CoreEngine {
         return this._entities;
     }
 
-    public init(callback = () => {}) {
-        window.requestAnimationFrame(() => {this._mainLoop(callback)});
+    public mainLoop(callback = (deltaTime: number) => {console.log(deltaTime)}) {
+        
+        window.requestAnimationFrame(() => {
+        if (this._gamePaused) return;
+        
+        const deltaTime = Date.now() - this._lastTimestamp;
+
+        this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(CVelocity)));
+        this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(CRenderable)));
+        this._readInput();
+
+        callback(deltaTime);
+        this._lastTimestamp = Date.now();
+        this.mainLoop(callback);
+        });
     }
 
     public addEntity(entity: Entity): Entity {
@@ -53,22 +72,15 @@ export default class CoreEngine {
     }
 
     public pauseGame() {
-        this.gamePaused = !this.gamePaused;
+        this._gamePaused = true;
+    }
+
+    public resumeGame() {
+        this._gamePaused = false;
     }
 
     public changeBackground(canvasBackground: CanvasBackground) {
         this._renderEngine.renderBackground(canvasBackground);
-    }
-
-    private _mainLoop(callback: () => void) {
-        if (this.gamePaused) return;
-
-        this._physicsEngine.updatePosition(this._entities.filter(entity => entity.hasComponent(Colidable)));
-        this._renderEngine.render(this._entities.filter(entity => entity.hasComponent(Renderable)));
-        this._readInput();
-
-        callback();
-        this.init(callback);
     }
 
     private _readInput(): void {
