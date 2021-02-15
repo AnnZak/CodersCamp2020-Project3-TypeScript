@@ -5,8 +5,6 @@ import {Component, CRenderable, CPosition, CVelocity, CGravity} from "../Compone
 import { IPointerDevice } from "../Input/inputs.h"
 import { Vector } from "../Utils/vector.h"
 import { CanvasBackground } from "../Utils/canvasBackground.h";
-import Mouse from "../Input/mouse";
-import HandTracker from "../Input/handtracker";
 
 export default class CoreEngine {
 
@@ -21,7 +19,6 @@ export default class CoreEngine {
     constructor(private _canvas: HTMLCanvasElement, private _controller: IPointerDevice, private _gamePaused: Boolean = false) {
         this._ctx = this._canvas.getContext("2d") as CanvasRenderingContext2D;
         this._renderEngine = new RenderEngine(this._canvas, this._ctx);
-
         this._lastTimestamp = Date.now();
     }
 
