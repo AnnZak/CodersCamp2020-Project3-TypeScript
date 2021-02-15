@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="style.css" rel="stylesheet">
+    <script src="./src/Games/BubbleNinja/app.ts" defer></script>
 </head>
 <body>
+    <video id="video"></video>
+    <canvas id="canvas"></canvas>
+    <div id="cont" class="not-visible">
+        <div id="content" class="not-visible">Start</div>
+    </div>
     <div class = container>
         <h2>
             Bubble</br> Ninja
@@ -16,17 +22,11 @@
                 <input id="username" class="name" type="text" required />
                 <span class="placeholder">Enter Your Name</span>
             </label>
-            
-
             <div class = "buttondiv">
-                <button id="button" class="btn">
+                <button id="play-button" class="btn">
                   PLAY
                 </button>
-                <button id="button" class="btn1">
-                    SCORE
-                </button>
             </div>
-
         </div>
     </div>
 </body>
