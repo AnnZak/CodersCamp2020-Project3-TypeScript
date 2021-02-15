@@ -59,7 +59,7 @@ export default class Game {
 
             console.log(this._engine.entities.length);
 
-            if(this._engine.entities.length === 0)
+            if(this._gameTime >= this._maxGameTime && this._engine.entities.length === 0)
                 this._gameOver();
         });
     }
