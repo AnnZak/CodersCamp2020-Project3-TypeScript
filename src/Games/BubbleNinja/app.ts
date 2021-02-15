@@ -20,6 +20,11 @@ playButton.addEventListener("click", e => {
         cont.classList.add("flex-container");
         contentDiv.classList.remove("not-visible");
         contentDiv.classList.add("content-visible");
+        window.setTimeout(() => {
+            cont.classList.add("not-visible");
+            contentDiv.classList.add("not-visible");
+            container.classList.remove("not-visible");
+        }, 5000);
     })
 
     game.start();
