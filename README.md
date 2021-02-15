@@ -60,23 +60,23 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Jan
 
 #### Development:
 
-- [Michał Ciborowski](https://github.com/axios/axios)
-- [Anna Pastor](https://github.com/axios/axios)
-- [Ernest Szczeblewski](https://github.com/axios/axios)
-- [Anna Żak](https://github.com/axios/axios)
-- [Aleksandra Żochowska](https://github.com/axios/axios)
+- [Michał Ciborowski](https://github.com/Cidebur)
+- [Anna Pastor](https://github.com/anpastor)
+- [Ernest Szczeblewski](https://github.com/ESzczeblewski)
+- [Anna Żak](https://github.com/AnnZak)
+- [Aleksandra Żochowska](https://github.com/AleksandraZochowska)
 
 ##### Tech Lead:
 
-- [Michał Ciborowski](https://github.com/axios/axios)
+- [Michał Ciborowski](https://github.com/Cidebur)
 
 ##### Product Owner:
 
-- [Aleksandra Żochowska](https://github.com/axios/axios)
+- [Aleksandra Żochowska](https://github.com/AleksandraZochowska)
 
 ##### Development Manager:
 
-- [Ernest Szczeblewski](https://github.com/axios/axios)
+- [Ernest Szczeblewski](https://github.com/ESzczeblewski)
 
 ## Live Preview
 
