@@ -6,8 +6,8 @@ export default class BombBubble extends Bubble {
     
     constructor(position: Vector, velocity: Vector) {
         const bomb = new Image();
-        bomb.src = "https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180818104/108105662-duck-vector-icon-isolated-on-transparent-background-duck-logo-concept.jpg";
+        bomb.src = "https://github.com/Cidebur/CodersCamp2020-Project3-TypeScript/blob/dev/src/Games/BubbleNinja/img/blowfish.png?raw=true";
 
-        super(position, velocity, "red", 0, 50, true, bomb);
+        super(position, velocity, "red", 0, 80, true, bomb);
     }
 }
