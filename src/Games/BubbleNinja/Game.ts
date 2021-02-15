@@ -38,6 +38,7 @@ export default class Game {
 
     public start() {
 
+        this._engine.changeBackground({imagePath: "https://images.unsplash.com/photo-1530053969600-caed2596d242?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"});
         this._engine.resumeGame();
         this._engine.mainLoop((deltaTime) => {
 
