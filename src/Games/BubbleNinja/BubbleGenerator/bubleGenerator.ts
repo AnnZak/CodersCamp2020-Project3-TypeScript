@@ -1,5 +1,5 @@
 import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity, IPointerDevice, CanvasBackground, RenderSettings, Shape, Size, Vector } from "../../../Engine";
-import Bubble from "../GameObjects/Bubble";
+import BlueBubble from "../GameObjects/BlueBubble";
 
 export default class GameObjectGenerator {
 
@@ -9,14 +9,16 @@ export default class GameObjectGenerator {
     
     generator(deltaTime: number) { 
 
+        console.log("in generator");
+
         let xposition: number = this._getRandomInt(50, this._canvas.width);
         let xvelocity: number = this._getRandomInt(-0.1, 0.1);
-        let yvelocity = this._getRandomInt(1, 2);
+        let yvelocity = -this._getRandomInt(1, 2);
 
 
         if (this._lastBubbleTime > 1000) {
             this._lastBubbleTime = 0;
-            this._engine.addEntity(new Bubble({x: 60 + xposition, y: 200}, {x: 0 + xvelocity, y: + yvelocity}, "blue", {width: 50, height:50} ));
+            this._engine.addEntity(new BlueBubble({x: 0 + xposition, y: this._canvas.height}, {x: 0 + xvelocity, y: 0 + yvelocity} ));
         }   
 
         this._lastBubbleTime += deltaTime;

@@ -4,7 +4,7 @@ import { Size } from "../Utils/size.h";
 
 export default class Renderable extends Component {
 
-    constructor(public color: string = "white", public shape: Shape, public size: Size, public texture?: string) {
+    constructor(public color: string = "white", public shape: Shape, public size: Size, public img?: HTMLImageElement) {
         super();
     }
 }

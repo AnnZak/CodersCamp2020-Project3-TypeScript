@@ -26,8 +26,8 @@ export default class RenderEngine {
                 const component = entity.getComponent(Renderable);
                 const position = entity.getComponent(CPosition);
 
-                if (component.texture) {
-                    this._objectTexture(position.x, position.y, component.size.width, component.texture);  
+                if (component.img) {
+                    this._objectTexture(position.x, position.y, component.size.width, component.img);  
                 } else {
                     switch(component.shape) {
                         case "SQUARE":
@@ -94,13 +94,8 @@ export default class RenderEngine {
         this._ctx.fill(circle);        
     }
 
-    private _objectTexture(x: number, y: number, width: number, texture: string) {
-        const img = new Image();
-        const ctx = this._ctx;
-        img.addEventListener('load', function(e) {
-            ctx.drawImage(this, x-width/2, y-width/2, width, width);
-            ctx.fill();
-        }, true);
-        img.src = texture;
+    private _objectTexture(x: number, y: number, width: number, img: HTMLImageElement) {
+        this._ctx.drawImage(img, x-width/2, y-width/2, width, width);
+        this._ctx.fill();
       }
 }
