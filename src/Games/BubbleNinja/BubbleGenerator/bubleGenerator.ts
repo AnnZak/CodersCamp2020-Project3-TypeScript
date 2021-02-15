@@ -16,7 +16,7 @@ export default class GameObjectGenerator {
 
         if (this._lastBubbleTime > 1000) {
             this._lastBubbleTime = 0;
-            this._engine.addEntity(new Bubble({x: 60 + xposition, y: 200}, {x: 0 + xvelocity, y: + yvelocity}, "blue", {width: 50, height:50} ));
+            this._engine.addEntity(new Bubble({x: 0 + xposition, y: this._canvas.width}, {x: 0 + xvelocity, y: 0 + yvelocity}, "blue", {width: 50, height:50} ));
         }   
 
         this._lastBubbleTime += deltaTime;

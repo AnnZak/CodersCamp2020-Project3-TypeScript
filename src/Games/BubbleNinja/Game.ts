@@ -4,19 +4,20 @@ import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity,
 //import game components, objects, modules
 import Pointable from "./GameComponents/Pointable"
 import * as Collisions from "./GameModules/Collisions";
+import Bubble from "./BubbleGenerator/bubleGenerator"
 
 //todo DELETE
-class Bubble extends Entity {
-    constructor(position: Vector, velocity: Vector, arrayComponents: Array<Component> = []) {
-        super([...arrayComponents,
-            new CRenderable("blue", Shape.circle, {width: 50, height:50}),
-            new CPosition(position),
-            new CVelocity(velocity),
-            new CGravity({x: 0, y: 0}),
-            new Pointable(10, 25)
-        ]);
-    }
-}
+// class Bubble extends Entity {
+//     constructor(position: Vector, velocity: Vector, arrayComponents: Array<Component> = []) {
+//         super([...arrayComponents,
+//             new CRenderable("blue", Shape.circle, {width: 50, height:50}),
+//             new CPosition(position),
+//             new CVelocity(velocity),
+//             new CGravity({x: 0, y: 0}),
+//             new Pointable(10, 25)
+//         ]);
+//     }
+// }
 //end DELETE
 
 export default class Game {
@@ -25,10 +26,12 @@ export default class Game {
     private _points = 0;
     private _gameTime = 0;
     private _maxGameTime;
+    private _bubble;
 
     constructor(private _canvas: HTMLCanvasElement, private _inputDevice: IPointerDevice){ //setting might include difficulty: number of lifes between gameover, etc.
         this._maxGameTime = 60000;
         this._engine = new Engine(this._canvas, this._inputDevice, true);
+        this._bubble = new Bubble(this._canvas, this._engine);
     }
 
     private _lastBubble = 0;
@@ -41,13 +44,15 @@ export default class Game {
             console.log("Delta time: " + deltaTime + "ms")
 
             this._gameTime += deltaTime;
-            this._lastBubble += deltaTime
+            // this._lastBubble += deltaTime
+
+            this._bubble.generator(deltaTime);
 
             //generate bubbles if the time is right (use deltaTime accumulation)
-            if(this._lastBubble >= 1000){
-                this._engine.addEntity(new Bubble({x: -50, y: 300}, {x: 5, y: 0}))
-                this._lastBubble = 0;
-            }
+            // if(this._lastBubble >= 1000){
+            //     this._engine.addEntity(new Bubble({x: -50, y: 300}, {x: 5, y: 0}))
+            //     this._lastBubble = 0;
+            // }
 
             this._engine.entities.forEach(entity => {
 

@@ -3,9 +3,7 @@ import Game from "./Game";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
-class mockMouse implements IPointerDevice {
-    public cursorPosition: Vector = {x: 1100, y: 310}
-}
+const mouse = new Mouse(canvas);
 
-const game = new Game(canvas, new mockMouse());
+const game = new Game(canvas, mouse);
 game.start();
