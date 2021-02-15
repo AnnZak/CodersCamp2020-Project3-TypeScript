@@ -38,7 +38,8 @@ export default class Game {
         this._engine.resumeGame();
         this._engine.mainLoop((deltaTime) => {
 
-            console.log("Delta time: " + deltaTime + "ms")
+            // console.log(this._engine.cursorPosition);
+            // console.log("Delta time: " + deltaTime + "ms")
 
             this._gameTime += deltaTime;
             this._lastBubble += deltaTime
