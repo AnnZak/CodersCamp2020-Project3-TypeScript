@@ -2,10 +2,7 @@ import { Engine, Entity, Component, CRenderable, CPosition, CVelocity, CGravity,
 import Game from "./Game";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+const mouse = new Mouse(canvas);
 
-class mockMouse implements IPointerDevice {
-    public cursorPosition: Vector = {x: 1100, y: 310}
-}
-
-const game = new Game(canvas, new mockMouse());
+const game = new Game(canvas, mouse);
 game.start();
