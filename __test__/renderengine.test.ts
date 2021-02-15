@@ -40,24 +40,16 @@ describe("RenderEngine", () => {
         expect(canvas.height).toEqual(400);
     });
     
-    // renderBackground()
-    
     it("changes background to color red", () => {
         const re = new RenderEngine(canvas, context, {width: 300, height: 400});
         re.renderBackground({color: "red"});
         expect(canvas.style.background).toEqual("red");
     });
-    
-    // it("changes background to given gradient", () => {
-    //     const re = new RenderEngine(canvas, context, {width: 300, height: 400});
-    //     re.renderBackground({gradient: "linear-gradient(90deg, rgba(84,0,49,1) 0%, rgba(121,9,37,1) 35%, rgba(0,70,100,1) 100%);"});
-    //     expect(canvas.style.background).toEqual("linear-gradient(90deg, rgba(84,0,49,1) 0%, rgba(121,9,37,1) 35%, rgba(0,70,100,1) 100%);");
-    // });
 
     it("changes background to given image", () => {
         const re = new RenderEngine(canvas, context, {width: 300, height: 400});
         re.renderBackground({imagePath: "./img/forest.jpg"});
-        expect(canvas.style.background).toEqual("url(./img/forest.jpg)");
+        expect(canvas.style.background).toEqual("url(./img/forest.jpg) center / cover no-repeat");
     });
 
 });
