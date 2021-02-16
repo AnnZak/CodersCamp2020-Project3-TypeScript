@@ -4,6 +4,7 @@ const path = require('path');
 
 // keep it simple for now
 module.exports = {
+    mode: 'production',
     target: 'web',
     entry: [
         'babel-polyfill', './src/Games/BubbleNinja/app.ts'
