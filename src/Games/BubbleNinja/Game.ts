@@ -25,7 +25,7 @@ export default class Game {
 
         this._engine.changeBackground({imagePath: "https://images.unsplash.com/photo-1530053969600-caed2596d242?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"});
         this._engine.resumeGame();
-        this._engine.mainLoop((deltaTime) => {
+        this._engine.mainLoop((deltaTime: number) => {
 
             this._gameTime += deltaTime;
 
@@ -33,7 +33,7 @@ export default class Game {
                 this._bubbleGenerator.generate(deltaTime);
             }
 
-            this._engine.entities.forEach(entity => {
+            this._engine.entities.forEach((entity: Entity) => {
 
                 if(this._detectCursorCollision(entity)) {
 
