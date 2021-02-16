@@ -33,6 +33,20 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Jan
 
 ## Engine API:
 
+| Classes | Members                 | Params           | Description |
+|---------|-------------------------|------------------|-------------|
+| Engine  | addEntity               | Entity           |             |
+|         | removeEntity            | Entity           |             |
+|         | pauseGame               |  -               |             |
+|         | resumeGame              |  -               |             |
+|         | changeBackground        | CanvasBackground |             |
+|         | mainLoop                | callback         |             |
+|         |                         |                  |             |
+|         | entities                |                  |             |
+|         | gamePaused              |                  |             |
+|         | cursorPosition          |                  |             |
+|         | previousCursorPositions |                  |             |
+
 ## Gameplay
 
 1. Basically Fruit Ninja clone...
