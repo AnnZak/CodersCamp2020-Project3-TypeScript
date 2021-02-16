@@ -1,11 +1,12 @@
-# Bubble Ninja
+# Good Enough Game Engine (GeGe): Bubble Ninja demo game
 
 **CodersCamp 2020 - Project TypeScript**
 
 ## Table of contents
 
 - [General info](#general-info)
-- [Engine Functionalitites](#engine-functionalities-and-characteristics)
+- [Engine Characteristics](#engine-characteristics)
+- [Engine API](#engine-API)
 - [Gameplay](#gameplay)
 - [Technologies](#technologies)
 - [Project scope](#project-scope)
@@ -14,14 +15,15 @@
 
 ## General info
 
-The aim of this project was to build an innovative and visually stunning browser game, showcasing our brand new game engine - GeGe (Good Enough Game Engine).
-In Bubble Ninja player earns points by hovering cursor over blue floating bubbles. For each missed bubble player loses points.
+The aim of this project was to build a simple and intuitive game engine applicable to developing a variety of 2D canvas-based browser games.  
+Good Enough Game Engine (GeGe) follows Entity-Component-System design pattern, widely used in game development. This approach enables great level of flexibility in defining game objects.
+To showcase our engine we have prepared simple, yet visually stunning game - Bubble Ninja. In Bubble Ninja player earns points by hovering cursor over blue floating bubbles. For each missed bubble player loses points.
 
 Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Jan - Feb 2021 using TypeScript.
 
-## Engine Functionalities and Characteristics:
+## Engine Characteristics:
 
-1. creating game objects in entity-component system
+1. creating and removing game objects and their customisable components during runtime
 2. pause and resume game
 3. powerfully simple 2D physics engine
 4. 2D objects and backgrounds rendering
@@ -29,13 +31,15 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Jan
 6. highly customisable
 7. very easy to grasp and fast to use
 
+## Engine API:
+
 ## Gameplay
 
 1. Basically Fruit Ninja clone...
 2. ...but underwater!
 3. Slash bubbles to earn points.
 4. Beware of the sinister, however cute, fishes!
-5. Compare your score with your friends.
+5. Sea (pun intended) how well you've done by taking a look at your final score.
 
 ## Technologies
 
