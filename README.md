@@ -33,19 +33,43 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Jan
 
 ## Engine API:
 
-| Classes | Members                 | Params           | Description |
-|---------|-------------------------|------------------|-------------|
-| Engine  | addEntity               | Entity           |             |
-|         | removeEntity            | Entity           |             |
-|         | pauseGame               |  -               |             |
-|         | resumeGame              |  -               |             |
-|         | changeBackground        | CanvasBackground |             |
-|         | mainLoop                | callback         |             |
-|         |                         |                  |             |
-|         | entities                |                  |             |
-|         | gamePaused              |                  |             |
-|         | cursorPosition          |                  |             |
-|         | previousCursorPositions |                  |             |
+| Classes / Interfaces / Types | Members                 | Params           | Description |
+|------------------------------|-------------------------|------------------|-------------|
+| Engine                       | entities                |                  |             |
+|                              | gamePaused              |                  |             |
+|                              | cursorPosition          |                  |             |
+|                              | previousCursorPositions |                  |             |
+|                              |                         |                  |             |
+|                              | addEntity               | Entity           |             |
+|                              | removeEntity            | Entity           |             |
+|                              | pauseGame               | -                |             |
+|                              | resumeGame              | -                |             |
+|                              | changeBackground        | CanvasBackground |             |
+|                              | mainLoop                | callback         |             |
+| Entity                       | id                      |                  |             |
+|                              | components              |                  |             |
+|                              |                         |                  |             |
+|                              | addComponent            | Component        |             |
+|                              | removeComponent         | typeof Component |             |
+|                              | hasComponent            | typeof Component |             |
+| Component                    | entity                  | Entity           |             |
+| CRenderable                  | color                   |                  |             |
+|                              | shape                   |                  |             |
+|                              | size                    |                  |             |
+|                              | img                     |                  |             |
+| CPosition                    | x, y                    |                  |             |
+| CVelocity                    | x, y                    |                  |             |
+| CGravity                     | x, y                    |                  |             |
+| IPointerDevice               | cursorPosition          |                  |             |
+| Mouse                        | cursorPosition          |                  |             |
+| CanvasBackground             | color                   |                  |             |
+|                              | gradient                |                  |             |
+|                              | imagePath               |                  |             |
+| Vector                       | x, y                    |                  |             |
+| Size                         | width, height           |                  |             |
+| Shape                        | square                  |                  |             |
+|                              | circle                  |                  |             |
+| RenderSettings               | width, height           |                  |             |
 
 ## Gameplay
 
