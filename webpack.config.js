@@ -9,9 +9,9 @@ module.exports = {
         'babel-polyfill', './src/Games/BubbleNinja/app.ts'
     ],
     output: {
-        path: path.resolve(__dirname+ '/../dist'),
+        path: path.resolve(__dirname+ '/dist'),
         filename: 'app.js',
-        publicPath: '/static/dist/',
+        publicPath: './dist/',
     },
     resolve: {
         modules: ['./app/', './node_modules/', './front-v2/'],
@@ -45,7 +45,6 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoEmitOnErrorsPlugin(), // don't reload if there is an error
-        new BundleTracker({filename: './webpack-stats.json'})
     ],
     module: {
         rules: [
@@ -66,6 +65,7 @@ module.exports = {
           },
           {
             test: /\.(png|jpe?g|gif)$/i,
+            exclude: /node_modules/,
             use: [
               {
                 loader: 'file-loader',
@@ -77,6 +77,7 @@ module.exports = {
           },
           {
             test: /\.css$/i,
+            exclude: /node_modules/,
             use: ['style-loader', 'css-loader'],
           },
         ]
